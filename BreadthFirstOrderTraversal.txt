@@ -1,0 +1,57 @@
+/* Program for Breadth First Order Traversal*/
+
+import java.util.Queue; 
+import java.util.LinkedList; 
+
+class Node { 
+	int value; 
+	Node left, right; 
+
+	public Node(int data) { 
+		value = data; 
+		left = null; 
+		right = null; 
+	} 
+} 
+
+class BinaryTree { 
+
+	Node root; 
+
+	void traverseBreadthFirst() 
+	{ 
+		Queue<Node> queue = new LinkedList<Node>(); 
+		queue.add(root); 
+		while (!queue.isEmpty()) 
+		{ 
+
+			Node tempNode = queue.poll(); 
+			System.out.print(tempNode.value + " "); 
+
+			/*Insert left child in queue */
+			if (tempNode.left != null) { 
+				queue.add(tempNode.left); 
+			} 
+
+			/*Insert right child in queue */
+			if (tempNode.right != null) { 
+				queue.add(tempNode.right); 
+			} 
+		} 
+	} 
+
+	public static void main(String args[]) 
+	{ 
+		//Binary tree Insertion with nodes
+		BinaryTree tree = new BinaryTree(); 
+		tree.root = new Node(1); 
+		tree.root.right = new Node(2); 
+		tree.root.right.right = new Node(5);
+		tree.root.right.right.right = new Node(6); 
+		tree.root.right.right.left = new Node(3);
+		tree.root.right.right.left.right = new Node(4); 
+
+		System.out.println("Breadth first order traversal of given binary tree is - "); 
+		tree.traverseBreadthFirst(); 
+	} 
+} 
