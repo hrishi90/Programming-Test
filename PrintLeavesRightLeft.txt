@@ -1,0 +1,66 @@
+
+import java.util.*; 
+
+class TreeTraversal 
+{ 
+	
+// A class having ordered Binary Tree Node 
+static class Node 
+{ 
+	int value; 
+	Node left, right; 
+}; 
+
+// function to create a new tree node 
+static Node newNode(int value) 
+{ 
+	Node initial = new Node(); 
+	initial.value = value; 
+	initial.left = initial.right = null; 
+	return initial
+; 
+} 
+
+// Function to print leaf 
+// nodes from right to left 
+static void traverseLeaves(Node root) 
+{ 
+	// If node is null 
+	if (root == null) 
+		return; 
+
+	// If node is leaf node, print its data 
+	if (root.left == null && root.right == null) 
+	{ 
+		System.out.print( root.value +" "); 
+		return; 
+	} 
+
+	// If right child exists, check for leaf 
+	// recursively 
+	if (root.right != null) 
+		traverseLeaves(root.right); 
+
+	// If left child exists, check for leaf 
+	// recursively 
+	if (root.left != null) 
+		traverseLeaves(root.left); 
+} 
+
+// main function 
+public static void main(String args[]) 
+{ 
+	Node root = newNode(8); 
+	root.left = newNode(3); 
+	root.right = newNode(10); 
+	root.left.left = newNode(1); 
+	root.left.right = newNode(6);
+	root.left.right.left = newNode(4);
+	root.left.right.right = newNode(7);
+	root.right.right = newNode(14);
+	root.right.right.left = newNode(13);
+
+	traverseLeaves(root); 
+} 
+} 
+
